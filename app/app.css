@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-primary: #1313ec;
+  --color-background-light: #f6f6f8;
+  --color-background-dark: #101022;
+  --color-surface-dark: #1a1a2e;
+  --color-surface-darker: #0f0f1a;
+  --color-accent-blue: #3b82f6;
+
+  /* Additional colors from modal HTML */
+  --color-primary-glow: #4d4dff;
+  --color-border-dark: #232348;
+  --color-success: #10b981;
+  --color-accent-purple: #a855f7;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  @apply bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display overflow-hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101022;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d2d42;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d3d56;
+}
+
+.code-editor-bg {
+  background-image: radial-gradient(#2d2d42 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Base styles for dark mode preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* Modal Specifics */
+.glass-panel {
+  background: rgba(25, 25, 51, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(35, 35, 72, 0.5);
+}
+
+.neon-glow {
+  box-shadow: 0 0 20px -5px rgba(19, 19, 236, 0.3);
+}
+
+.step-connector {
+  position: absolute;
+  left: 15px;
+  /* Center of the icon (32px width / 2) - 1px width of line */
+  top: 32px;
+  bottom: -16px;
+  width: 2px;
+  background-color: #232348;
+  z-index: 0;
+}
+
+.step-item:last-child .step-connector {
+  display: none;
+}
